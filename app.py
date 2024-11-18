@@ -1,11 +1,15 @@
 # app.py
-from flask import Flask
+from flask import Flask, jsonify
 from config import db, DATABASE_URI
 from routes.estudiante_routes import estudiante_bp
 from routes.curso_routes import curso_bp
 from routes.profesor_routes import profesor_bp
+from flask_cors import CORS  # Importa CORS
 
 app = Flask(__name__)
+
+# Configurar CORS globalmente para todas las rutas
+CORS(app)
 
 # Configuración de la base de datos
 app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URI
